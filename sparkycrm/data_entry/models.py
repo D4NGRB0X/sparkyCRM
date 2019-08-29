@@ -1,5 +1,5 @@
 from django.db import models 
-from .payments import payment
+# from .payments import payment
 
 class CorpInfo(models.Model):
 
@@ -32,8 +32,8 @@ class CorpInfo(models.Model):
     contact_type = models.CharField(max_length=255, choices=CONTACT_TYPE)
     account_manager = models.CharField(max_length=255, choices=ACCOUNT_MNGR)
     gdrive = models.URLField(max_length=200)
-    payments = models.ForeignKey(payment, on_delete=models.CASCADE)
-
+    payments = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.first_name
 

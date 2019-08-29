@@ -1,0 +1,26 @@
+{% extends 'data_entry/base.html' %}
+{% block content %}
+    <H1>Owner List</H1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Owner Name</th>
+                <th>Corp Name</th>
+                <th>Contact Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for corp in corps %}
+            <tr>
+                <td>
+                    {% if CustomUser_user.is_admin %}<a href="{% url 'admin/' %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% elif CustomUser_user.is_appstaff %}<a href="{% url 'owner' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% else %}<a href="{% url 'owner_restricted' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% endif %}
+                </td>
+                <td>{{corp.corp_name}}</td>
+                <td>{{corp.contact_type}}</td>
+            </tr>
+        {% endfor %}            
+        </tbody>
+{% endblock content %} 

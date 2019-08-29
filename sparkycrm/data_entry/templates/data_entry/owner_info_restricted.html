@@ -1,0 +1,24 @@
+{% extends 'data_entry/base.html' %}
+{% block content %}
+    <H1>Owner List</H1>
+        <dl>
+            <dt>First Name</dt>
+            <dd>{{owner.first_name}}</dd>
+            <dt>Last Name</dt>
+            <dd>{{owner.last_name}}</dd>
+            <dt>Corp Email</dt>
+            <dd>{{owner.corp_email}}</dd>
+            <dt>Current Home Address</dt>
+            <dd>{{owner.home_address}}</dd>
+            <dt>Previous Home Address</dt>
+            <dd>{{owner.old_home_address}}</dd>
+            <dt>Corp name</dt>
+            <dd>{{owner.corp_name}}</dd>
+            <dt>Second Corp</dt>
+            <dd>{{owner.second_corp}}</dd>
+            <dt>Contact Type</dt>
+            <dd>{{owner.contact_type}}</dd>
+            <dt>Account Manager</dt>
+            <dd>{{owner.account_manager}}</dd>
+    </dl>
+{% endblock content %}

@@ -7,6 +7,9 @@ class CustomUser(AbstractUser):
     is_appstaff = models.BooleanField('AppStaff', default=False)
     is_rep = models.BooleanField('OutsideRep', default=False)
 
+    #  models.ForeignKey('AccessLevel', on_delete=models.CASCADE,
+    #                              related_name='Admin', related_query_name='accesslevel')
+
 class AccessLevel(models.Model):
     ACCESS_LEVEL = [
     ('Admin','Admin'),
