@@ -1,20 +1,9 @@
 from django.db import models 
-
-
+from .payments import payment
 
 class CorpInfo(models.Model):
 
-    # def __init__(self, contact_type):
-    #     self.contact_type = contact_type.choice
-    
-    # def payment(self, contact_type):
-    #     if self.choices == 'Active':
-    #         payments = models.IntegerField(default=250)
-    #         return payments
-    #     else:
-    #         payments = models.IntegerField(default=0)
-    #         return payments
-
+   
     CONTACT_TYPE = [
         ('On boarding', 'On boarding'),
         ('Active', 'Active Paid'),
@@ -43,7 +32,12 @@ class CorpInfo(models.Model):
     contact_type = models.CharField(max_length=255, choices=CONTACT_TYPE)
     account_manager = models.CharField(max_length=255, choices=ACCOUNT_MNGR)
     gdrive = models.URLField(max_length=200)
-    payments = models.IntegerField(default=0)
+    payments = models.ForeignKey(payment, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.first_name
+
+    # def __init__(self, contact_type):
+    #     self.contact_type = contact_type.choice
+    
+    
