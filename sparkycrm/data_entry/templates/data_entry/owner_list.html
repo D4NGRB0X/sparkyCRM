@@ -13,8 +13,8 @@
         {% for corp in corps %}
             <tr>
                 <td>
-                    {% if CustomUser_user.is_admin %}<a href="{% url 'admin/' %}">{{corp.last_name}}, {{corp.first_name}}</a>
-                    {% elif CustomUser_user.is_appstaff %}<a href="{% url 'owner' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% if perms.users.is_admin %}<a href="{% url 'owner_info' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% elif perms.users.is_appstaff %}<a href="{% url 'owner_info' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
                     {% else %}<a href="{% url 'owner_restricted' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
                     {% endif %}
                 </td>

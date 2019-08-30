@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User, Group
+from .models import CustomUser
+from data_entry.models import CorpInfo
 
 def login(request):
-    return render(request, 'user_interface/login.html')
+    return render(request, 'users/login.html')
 
 def login_success(request):
-    """
-    Redirects users based on whether they are in the admins group
-    """
-    if request.user.is_admin:
-        # user is an admin
-        return redirect("/admin")
+    corps = CorpInfo.objects.all()
+    return render(request,'data_entry/owner_list.html',{'corps': corps})
+#     """
+#     Redirects users based on whether they are in the admins group
+#     """
+#     if CustomUser.has_perm('users.is_admin'):
+#         # user is an admin
+#         return redirect("/admin")
     
-    elif request.user.is_appstaff:
-        # user is an application staff
-        return redirect("/owner")
-    else:
-        return redirect("/restricted")
+#     elif CustomUser.has_perm('users.is_appstaff'):
+#     #     # user is an application staff
+#         return redirect("/owner")
+#     else:
+#         return redirect("/restricted")
