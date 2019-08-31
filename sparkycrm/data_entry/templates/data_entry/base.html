@@ -22,7 +22,11 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="#">Sparky</a>
+          {% if user.is_authenticated %}
+            <a class="navbar-brand mr-4" href="/owner">Sparky</a>
+          {% else %}
+            <a class="navbar-brand mr-4" href="{% url 'login' %}">Sparky</a>
+          {% endif %}
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -30,11 +34,13 @@
             <div class="navbar-nav mr-auto">
             {% if user.is_authenticated and perms.user.is_admin %}
               <a class="nav-item nav-link" href="/admin">Admin</a>
-              <a class="nav-item nav-link" href="/owner"}>Owners</a>
-              <a class="nav-item nav-link" href="#">About</a>
+              <a class="nav-item nav-link" href="/owner">Owners</a>
+              <!--<a class="nav-item nav-link" href="#">About</a>-->
             {% elif user.is_authenticated and perms.users.is_appstaff %}
               <a class="nav-item nav-link" href="/owner"}>Owners</a>
               <a class="nav-item nav-link" href="#">Support</a>
+            {% elif user.is_authenticated %}
+              <a class="nav-item nav-link" href="/owner"}>Owners</a>
             {% else %}
 
             {% endif %}
@@ -45,7 +51,7 @@
                 {% if user.is_authenticated %}
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                 {% else %}
-                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <!--<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>-->
                 {% endif %}
               </div>
             </div>

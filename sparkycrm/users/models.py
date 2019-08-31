@@ -34,13 +34,14 @@ class AccessLevel(models.Model):
     def __str__(self):
         return self.access_level
 
-    def set_access(self, access_level):
+    def set_access(self, access_level, request):
         if access_level == 'Admin':
-            CustomUser.is_admin = True
-            return CustomUser
+            user = request.user.has_perm('users.is_admin')
+            return user
         elif access_level == 'AppStaff':
-            CustomUser.is_appstaff = True
-            return CustomUser
+            user = request.user.has_perm('users.is_appstaff')
+            return user
         else:
-            CustomUser.is_rep = True
-            return CustomUser
+            user = request.user.has_perm('users.is_rep')
+            return user
+            

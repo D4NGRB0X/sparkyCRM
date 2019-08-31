@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import CorpInfo
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
 def Data(request):
@@ -9,6 +9,7 @@ def Data(request):
     return render(request,'data_entry/owner_list.html',{'corps': corps})
 
 @login_required
+@permission_required('users.is_appstaff')
 def OwnerPage(request, corp_id):
     owner = CorpInfo.objects.get(pk=corp_id)
     return render(request, 'data_entry/owner_info.html', {'owner': owner})
