@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CorpInfo
+from .models import OwnerInfo
 
-admin.site.register(CorpInfo)
+admin.site.register(OwnerInfo)
 

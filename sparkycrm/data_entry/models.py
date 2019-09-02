@@ -1,7 +1,7 @@
 from django.db import models 
 # from .payments import payment
 
-class CorpInfo(models.Model):
+class OwnerInfo(models.Model):
 
    
     CONTACT_TYPE = [
@@ -15,7 +15,7 @@ class CorpInfo(models.Model):
         ('Patrick','Patrick')
     ]
 
-    corp_id = models.AutoField(primary_key=True, editable=False)
+    owner_id = models.AutoField(primary_key=True, editable=False)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     personal_email = models.EmailField(max_length=255)

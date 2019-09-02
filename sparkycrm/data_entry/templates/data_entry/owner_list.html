@@ -13,9 +13,9 @@
         {% for corp in corps %}
             <tr>
                 <td>
-                    {% if perms.users.is_admin %}<a href="{% url 'owner' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
-                    {% elif perms.users.is_appstaff %}<a href="{% url 'owner' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
-                    {% else %}<a href="{% url 'restricted' corp.corp_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% if perms.users.is_admin %}<a href="{% url 'owner' corp.owner_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% elif perms.users.is_appstaff %}<a href="{% url 'owner' corp.owner_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
+                    {% else %}<a href="{% url 'restricted' corp.owner_id %}">{{corp.last_name}}, {{corp.first_name}}</a>
                     {% endif %}
                 </td>
                 <td>{{corp.corp_name}}</td>
