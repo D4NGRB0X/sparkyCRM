@@ -19,29 +19,29 @@ class CustomUser(AbstractUser):
         #                              related_name='Admin', related_query_name='accesslevel')
 
 
-class AccessLevel(models.Model):
-    ACCESS_LEVEL = [
-        ('Admin', 'Admin'),
-        ('AppStaff', 'AppStaff'),
-        ('OutsideRep', 'Rep')
-    ]
+# class AccessLevel(models.Model):
+#     ACCESS_LEVEL = [
+#         ('Admin', 'Admin'),
+#         ('AppStaff', 'AppStaff'),
+#         ('OutsideRep', 'Rep')
+#     ]
 
-    user = models.OneToOneField(CustomUser, verbose_name=(
-        "Access Level"), on_delete=models.CASCADE)
-    access_level = models.CharField(
-        ("Set Access Level"), max_length=50, choices=ACCESS_LEVEL, default='OutsideRep')
+#     user = models.OneToOneField(CustomUser, verbose_name=(
+#         "Access Level"), on_delete=models.CASCADE)
+#     access_level = models.CharField(
+#         ("Set Access Level"), max_length=50, choices=ACCESS_LEVEL, default='OutsideRep')
 
-    def __str__(self):
-        return self.access_level
+#     def __str__(self):
+#         return self.access_level
 
-    def set_access(self, access_level, request):
-        if access_level == 'Admin':
-            user = request.user.has_perm('users.is_admin')
-            return user
-        elif access_level == 'AppStaff':
-            user = request.user.has_perm('users.is_appstaff')
-            return user
-        else:
-            user = request.user.has_perm('users.is_rep')
-            return user
+#     def set_access(self, access_level, request):
+#         if access_level == 'Admin':
+#             user = request.user.has_perm('users.is_admin')
+#             return user
+#         elif access_level == 'AppStaff':
+#             user = request.user.has_perm('users.is_appstaff')
+#             return user
+#         else:
+#             user = request.user.has_perm('users.is_rep')
+#             return user
             
