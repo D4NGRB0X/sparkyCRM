@@ -1,29 +1,33 @@
 {% extends 'data_entry/base.html' %}
 {% block content %}
-    <H1>Owner List</H1>
+    <H1>{{owner.first_name}} {{owner.last_name}}</H1>
         <dl>
-            <dt>First Name</dt>
-            <dd>{{owner.first_name}}</dd>
-            <dt>Last Name</dt>
-            <dd>{{owner.last_name}}</dd>
+            <dt> Name</dt>
+            <dd>{{owner.first_name}} {{owner.last_name}}</dd>
             <dt>Personal Email</dt>
             <dd>{{owner.personal_email}}</dd>
             <dt>Corp Email</dt>
             <dd>{{owner.corp_email}}</dd>
             <dt>Phone 1</dt>
             <dd>{{owner.phone_1}}</dd>
-            <dt>Phone 2</dt>
+            {% if owner.phone_2 == null %}<dt>Phone 2</dt>
             <dd>{{owner.phone_2}}</dd>
+            {% else %}
+            {% endif %}
             <dt>Current Home Address</dt>
             <dd>{{owner.home_address}}</dd>
-            <dt>Previous Home Address</dt>
+            {% if owner.old_home_address != "" %}<dt>Previous Home Address</dt>
             <dd>{{owner.old_home_address}}</dd>
+            {% else %}
+            {% endif %}
             <dt>SSN</dt>
             <dd>{{owner.ssn}}</dd>
             <dt>Corp name</dt>
             <dd>{{owner.corp_name}}</dd>
-            <dt>Second Corp</dt>
+            {% if owner.second_corp != "" %}}<dt>Second Corp</dt>
             <dd>{{owner.second_corp}}</dd>
+            {% else %}
+            {% endif %}
             <dt>Referral</dt>
             <dd>{{owner.referral}}</dd>
             <dt>DOB</dt>
@@ -37,4 +41,5 @@
             <dt>Payment</dt>
             <dd>{{owner.payments}}</dd>
     </dl>
+    <a href="/newowner">Update</a>
 {% endblock content %}

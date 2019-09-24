@@ -33,9 +33,9 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
             {% if user.is_authenticated and perms.user.is_admin %}
-              <a class="nav-item nav-link" href="/admin">Admin</a>
+              <a class="nav-item nav-link" href="#">Admin</a>
               <a class="nav-item nav-link" href="/owner">Owners</a>
-              <!--<a class="nav-item nav-link" href="#">About</a>-->
+              <a class="nav-item nav-link" href="/newowner">New Owner</a>
             {% elif user.is_authenticated and perms.users.is_appstaff %}
               <a class="nav-item nav-link" href="/owner"}>Owners</a>
               <a class="nav-item nav-link" href="#">Support</a>

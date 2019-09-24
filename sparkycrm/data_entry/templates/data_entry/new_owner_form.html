@@ -2,5 +2,12 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <H1>New Owner</H1>
-    {{form | crispy}}
+        <body>
+            <form method="post">
+                {% csrf_token%}
+                {{form | crispy}}
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </form>
+        </body>
+    
 {% endblock content %} 
