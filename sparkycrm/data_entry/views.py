@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import OwnerInfo
 from .forms import OwnerInfoForm
 from django.contrib.auth.decorators import login_required, permission_required
+from data_entry.payments import payment
 
 
 @login_required
@@ -31,6 +32,7 @@ def NewOwner(request):
         form = OwnerInfoForm(request.POST)
         if form.is_valid():
             form.save()
+            # payment()
 
     form = OwnerInfoForm()
     return render(request, 'data_entry/new_owner_form.html', {'form': form})

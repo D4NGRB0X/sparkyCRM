@@ -39,11 +39,11 @@ class OwnerInfo(models.Model):
     contact_type = models.CharField(max_length=255, choices=CONTACT_TYPE)
     account_manager = models.CharField(max_length=255, choices=ACCOUNT_MNGR)
     gdrive = models.URLField(max_length=200)
-    payments = Case(
-            When(contact_type='Active', then=250), default=0,
-            output_field=models.PositiveIntegerField
-            )
-    # models.IntegerField(default=0)
+    payments = models.IntegerField(default=0)
+    # Case(
+    #         When(contact_type='Active', then=250), default=0,
+    #         output_field=models.PositiveIntegerField
+    #         )
 
     def __str__(self):
         return self.first_name
