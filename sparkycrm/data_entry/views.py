@@ -32,7 +32,7 @@ def NewOwner(request):
         form = OwnerInfoForm(request.POST)
         if form.is_valid():
             form.save()
-            # payment()
+            payment()
 
     form = OwnerInfoForm()
     return render(request, 'data_entry/new_owner_form.html', {'form': form})
