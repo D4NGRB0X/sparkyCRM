@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:owner_id>', views.OwnerPage, name='owner'),
     path('restricted/<int:owner_id>', views.OwnerPageRestricted, name='restricted'),
     path('newowner', views.NewOwner, name='newowner'),
+    path('newprospect', views.ProspectiveOwner, name='newprospect'),
 ]

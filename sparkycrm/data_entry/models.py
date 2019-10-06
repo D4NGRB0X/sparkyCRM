@@ -50,3 +50,13 @@ class OwnerInfo(models.Model):
 
     # def __init__(self, contact_type):
     #     self.contact_type = contact_type.choice
+
+class ProspectiveOwner(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    personal_email = models.EmailField(max_length=255)
+    phone_1 = models.CharField(("Phone ex. 123-123-4567"), max_length=20)
+    home_address = models.CharField(max_length=255)
+    contact_date = models.DateField()
+    referred_by = models.CharField(max_length=255)
+    notes = models.TextField()

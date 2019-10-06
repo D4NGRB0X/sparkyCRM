@@ -1,11 +1,16 @@
 from django.db import models
-# from .models import CorpInfo
+from data_entry.models import OwnerInfo
 
 
-def payment(self, contact_type):
-    if contact_type.choices == 'Active':
-        payments = models.IntegerField(default=250)
-        return payments
+def payment():
+    owner = OwnerInfo
+    owner
+    if owner.objects.get(contact_type) == 'Active':
+        owner.payments = 250
+        owner.save(update_fields=['payments'])
+        print("yes")
+        # return owner.payments
     else:
-        payments = models.IntegerField(default=0)
-        return payments
+        owner.payments = models.IntegerField(default=0)
+        print("nope")
+        return owner.payments
