@@ -23,11 +23,15 @@ urlpatterns = [
     # data.OwnerPage, name='owner'),
     path('owner/', include('data_entry.urls'), name='owner'),
     path('restricted/', data.OwnerPageRestricted, name='restricted'),
-    path('newowner', data.NewOwner, name='newowner'),
+    path('newowner/', data.NewOwner, name='newowner'),
+    path('update_owner', data.OwnerUpdate, name='update_owner'),
     path('', auth_views.LoginView.as_view(
         template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(
         template_name='users/logout.html'), name='logout'),
     path('login_success/', ui.login_success, name='login_success'),
-    path('prospect/', data.ProspectiveOwner, name='prospect')
+    path('newprospect/', data.NewProspect, name='newprospect'),
+    path('prospects/', data.Prospects, name='prospects'),
+    path('prospect/', data.ProspectPage, name='prospect'),
+    path('update_prospect', data.ProspectUpdate, name='update_prospect'),
 ]

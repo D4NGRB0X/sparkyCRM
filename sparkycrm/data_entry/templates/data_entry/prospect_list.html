@@ -1,0 +1,21 @@
+{% extends 'data_entry/base.html' %}
+{% block content %}
+    <H1>Prospect List</H1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prospect in prospect %}
+            <tr>
+                <td><a href="{% url 'prospect' prospect.id %}">{{prospect.last_name}}, {{prospect.first_name}}</a></td>
+                <td>{{prospect.personal_email}}</td>
+                <td>{{prospect.phone_1}}</td>
+            </tr>
+        {% endfor %}            
+        </tbody>
+{% endblock content %} 

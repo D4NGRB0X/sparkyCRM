@@ -1,11 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from .models import OwnerInfo
-from .forms import OwnerInfoForm, IntakeForm
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import OwnerInfo, ProspectiveOwner
+from .forms import OwnerInfoForm, ProspectForm, OwnerUpdateForm, ProspectUpdateForm
 from django.contrib.auth.decorators import login_required, permission_required
 from data_entry.payments import payment
 
-
+#Owner Views
 @login_required
 def Data(request):
     corps = OwnerInfo.objects.all()
@@ -22,14 +23,25 @@ def OwnerPage(request, owner_id):
 @login_required
 def OwnerPageRestricted(request, owner_id):
     owner = OwnerInfo.objects.get(pk=owner_id)
-    return render
-    (request, 'data_entry/owner_info_restricted.html', {'owner': owner})
+    return render(request, 'data_entry/owner_info_restricted.html', {'owner': owner})
+
+
+#Prospective Owner views
+@login_required
+@permission_required('user.is_admin')
+def Prospects(request):
+    prospect = ProspectiveOwner.objects.all()
+    return render(request, 'data_entry/prospect_list.html', {'prospect': prospect})
+
 
 @login_required
-def Prospect(request):
-    prospect = ProspectiveOwner.objects.all()
-    return render(request, 'data_entry/owner_list.html', {'prospect': prospect})
+@permission_required('users.is_admin')
+def ProspectPage(request, id):
+    prospect = ProspectiveOwner.objects.get(pk=id)
+    return render(request, 'data_entry/prospect_info.html', {'prospect': prospect})
 
+
+#Forms
 @login_required
 @permission_required('user.is_admin')
 def NewOwner(request):
@@ -42,10 +54,34 @@ def NewOwner(request):
 
 @login_required
 @permission_required('user.is_admin')
-def ProspectiveOwner(request):
+def OwnerUpdate(request):
     if request.method == 'POST':
-        form = IntakeForm(request.POST)
+        form = OwnerUpdateForm(request.POST, instance=request.owner)
         if form.is_valid():
             form.save()
-    form = IntakeForm()
-    return render(request, 'data_entry/new_owner_form.html', {'form': form})
+            messages.success(request, f'Owner Info Updated')
+            return redirect('owner')
+    form = OwnerUpdateForm()
+    return render(request, 'data_entry/owner_update_form.html', {'form': form})
+
+@login_required
+@permission_required('user.is_admin')
+def NewProspect(request):
+    if request.method == 'POST':
+        form = ProspectForm(request.POST)
+        if form.is_valid():
+            form.save()
+    form = ProspectForm()
+    return render(request, 'data_entry/new_prospect_form.html', {'form': form})
+
+@login_required
+@permission_required('user.is_admin')
+def ProspectUpdate(request):
+    if request.method == 'POST':
+        form = ProspectUpdateForm(request.POST, instance=request.ProspectiveOwner)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Prospect Updated')
+            return redirect('prospect')
+    form = ProspectUpdateForm()
+    return render(request, 'data_entry/prospect_update_form.html', {'form': form})

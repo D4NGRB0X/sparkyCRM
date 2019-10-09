@@ -60,3 +60,6 @@ class ProspectiveOwner(models.Model):
     contact_date = models.DateField()
     referred_by = models.CharField(max_length=255)
     notes = models.TextField()
+
+    def __str__(self):
+       return self.first_name

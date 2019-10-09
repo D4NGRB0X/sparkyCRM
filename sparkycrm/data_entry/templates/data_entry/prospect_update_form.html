@@ -1,0 +1,13 @@
+{% extends 'data_entry/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <H1>Prospective Owner Update</H1>
+        <body>
+            <form method="post">
+                {% csrf_token%}
+                {{form | crispy}}
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </form>
+        </body>
+    
+{% endblock content %} 
