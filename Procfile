@@ -1,1 +1,1 @@
-web: guincorn sparkycrm.wsgi
+web: gunicorn sparkycrm.wsgi
