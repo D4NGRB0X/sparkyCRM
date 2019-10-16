@@ -1,1 +1,1 @@
-web: gunicorn sparkycrm.wsgi --log-file -
+web: guinicorn sparkycrm.wsgi
