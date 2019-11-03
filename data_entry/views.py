@@ -89,7 +89,7 @@ def ProspectUpdate(request):
         form = ProspectUpdateForm(request.POST, instance=request.ProspectiveOwner)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Prospect Updated')
+            # messages.success(request, f'Prospect Updated')
             return redirect('prospect')
     form = ProspectUpdateForm()
     return render(request, 'data_entry/prospect_update_form.html', {'form': form})
