@@ -32,6 +32,7 @@ typed-ast = "==1.4.0"
 whitenoise = "==4.1.4"
 wrapt = "==1.11.2"
 Django = "==2.2.5"
+django-session-timeout = "*"
 
 [requires]
 python_version = "3.7"
