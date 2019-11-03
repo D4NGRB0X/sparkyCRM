@@ -65,7 +65,7 @@ def OwnerUpdate(request):
         form = OwnerUpdateForm(request.POST, instance=request.owner)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Owner Info Updated')
+            # messages.success(request, f'Owner Info Updated')
             return redirect('owner')
     form = OwnerUpdateForm()
     return render(request, 'data_entry/owner_update_form.html', {'form': form})
