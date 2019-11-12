@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_session_timeout
+from secure import secret_key
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'am2#y#vu(s^!kx97%_x-0=fe6753@h9)18+gz9r89^-8dor1)i'
+SECRET_KEY = secret_key #os.getenv("SECRET_KEY") python anywhere
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -140,7 +140,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'login_success'
 
-SESSION_EXPIRE_SECONDS = 30
+SESSION_EXPIRE_SECONDS = 300
 
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
