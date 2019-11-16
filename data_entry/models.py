@@ -19,7 +19,7 @@ class OwnerInfo(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     personal_email = models.EmailField(max_length=255)
-    corp_email = models.EmailField(max_length=255)
+    corp_email = models.EmailField(max_length=255, blank=True)
     phone_1 = models.CharField(("Phone ex. 123-123-4567"), max_length=20)
     # (optional)
     phone_2 = models.CharField(
@@ -34,7 +34,9 @@ class OwnerInfo(models.Model):
     # (optional)
     second_corp = models.CharField(max_length=255, blank=True)
     # (link back to referring owner)
-    referral = models.URLField(max_length=200, blank=True)
+    referral = models.CharField(max_length=255) 
+    # will turn this into a choice list later that references 
+    # other owners or a default of other
     date_of_birth = models.DateField()
     contact_type = models.CharField(max_length=255, choices=CONTACT_TYPE)
     account_manager = models.CharField(max_length=255, choices=ACCOUNT_MNGR)
