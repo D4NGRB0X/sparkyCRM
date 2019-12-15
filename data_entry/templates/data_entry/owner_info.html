@@ -6,11 +6,13 @@
             <dd>{{owner.first_name}} {{owner.last_name}}</dd>
             <dt>Personal Email</dt>
             <dd>{{owner.personal_email}}</dd>
-            <dt>Corp Email</dt>
-            <dd>{{owner.corp_email}}</dd>
+            {% if owner.corp_email != "" %}<dt>Corp Email</dt>
+           <dd>{{owner.corp_email}}</dd>
+            {% else %}
+            {% endif %}
             <dt>Phone 1</dt>
             <dd>{{owner.phone_1}}</dd>
-            {% if owner.phone_2 == null %}<dt>Phone 2</dt>
+            {% if owner.phone_2 != "" %}<dt>Phone 2</dt>
             <dd>{{owner.phone_2}}</dd>
             {% else %}
             {% endif %}
@@ -24,7 +26,7 @@
             <dd>{{owner.ssn}}</dd>
             <dt>Corp name</dt>
             <dd>{{owner.corp_name}}</dd>
-            {% if owner.second_corp != "" %}}<dt>Second Corp</dt>
+            {% if owner.second_corp != "" %}<dt>Second Corp</dt>
             <dd>{{owner.second_corp}}</dd>
             {% else %}
             {% endif %}
@@ -36,8 +38,8 @@
             <dd>{{owner.contact_type}}</dd>
             <dt>Account Manager</dt>
             <dd>{{owner.account_manager}}</dd>
-            <dt>Gdive</dt>
-            <dd>{{owner.gdrive}}</dd>
+            <dt>Account Documents</dt>
+            <dd><a href="{{owner.gdrive}}">{{owner.gdrive }}</a></dd>
     </dl>
-    <a href="/update_owner">Update</a>
+    <a href="{% url 'update_owner' owner.owner_id %}">Update</a>
 {% endblock content %}

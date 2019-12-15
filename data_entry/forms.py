@@ -1,9 +1,10 @@
 from django import forms
-from .models import OwnerInfo , ProspectiveOwner
+from .models import OwnerInfo, ProspectiveOwner
+from django.shortcuts import render
 
-#New Info
+
+# New Info
 class OwnerInfoForm(forms.ModelForm):
-
     class Meta:
         model = OwnerInfo
         fields = [
@@ -13,18 +14,18 @@ class OwnerInfoForm(forms.ModelForm):
             'contact_type', 'account_manager', 'gdrive',
         ]
 
+
 class ProspectForm(forms.ModelForm):
+    class Meta:
+        model = ProspectiveOwner
+        fields = [
+            'first_name', 'last_name', 'personal_email', 'home_address',
+            'contact_date', 'referred_by', 'notes',
+        ]
 
-        class Meta:
-            model = ProspectiveOwner
-            fields = [
-                'first_name', 'last_name', 'personal_email', 'home_address',
-                'contact_date', 'referred_by', 'notes',
-            ]
 
-#Update Info
+# Update Info
 class OwnerUpdateForm(forms.ModelForm):
-    
     class Meta:
         model = OwnerInfo
         fields = [
@@ -34,11 +35,13 @@ class OwnerUpdateForm(forms.ModelForm):
             'contact_type', 'account_manager', 'gdrive',
         ]
 
+
 class ProspectUpdateForm(forms.ModelForm):
-    
     class Meta:
-            model = ProspectiveOwner
-            fields = [
-                'personal_email', 'home_address',
-                'contact_date', 'notes',
-            ]
+        model = ProspectiveOwner
+        fields = [
+            'personal_email',
+            'home_address',
+            'contact_date',
+            'notes',
+        ]
