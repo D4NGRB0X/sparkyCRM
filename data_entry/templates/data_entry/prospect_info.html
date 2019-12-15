@@ -6,13 +6,13 @@
             <dd>{{prospect.first_name}} {{prospect.last_name}}</dd>
             <dt>Personal Email</dt>
             <dd>{{prospect.personal_email}}</dd>
-            <dt>Phone </dt>
-            <dd>{{prospect.phone_1}}</dd>
+{#            <dt>Phone </dt>#}
+{#            <dd>{{prospect.phone_1}}</dd>#}
             <dt>Current Home Address</dt>
             <dd>{{prospect.home_address}}</dd>
             <dt>Referred By</dt>
             <dd>{{prospect.referred_by}}</dd>
             <dd>{{prospect.notes}}</dd>
     </dl>
-    <a href="/update_prospect">Update</a>
+    <a href="{% url 'update_prospect' prospect.id %}">Update</a>
 {% endblock content %}
