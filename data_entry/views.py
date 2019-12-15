@@ -90,12 +90,13 @@ def NewProspect(request):
 # @login_check
 @login_required
 @permission_required('user.is_admin')
-def ProspectUpdate(request):
+def ProspectUpdate(request, id):
+    prospect = ProspectiveOwner.objects.get(pk=id)
     if request.method == 'POST':
-        form = ProspectUpdateForm(request.POST, instance=request.ProspectiveOwner)
+        form = ProspectUpdateForm(request.POST, instance=prospect)
         if form.is_valid():
             form.save()
             # messages.success(request, f'Prospect Updated')
-            return redirect('prospect')
-    form = ProspectUpdateForm()
-    return render(request, 'data_entry/prospect_update_form.html', {'form': form})
+            return redirect('/prospects')
+    form = ProspectUpdateForm(instance=prospect)
+    return render(request, 'data_entry/prospect_update_form.html', {'form': form, 'prospect': prospect})

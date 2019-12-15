@@ -11,5 +11,5 @@ urlpatterns = [
     path('newprospect', views.NewProspect, name='newprospect'),
     path('prospects', views.Prospects, name='prospects'),
     path('prospect/<int:id>', views.ProspectPage, name='prospect'),
-    path('update_prospect', views.ProspectUpdate, name='update_prospect'),
+    path('update_prospect/<int:id>', views.ProspectUpdate, name='update_prospect'),
 ]
