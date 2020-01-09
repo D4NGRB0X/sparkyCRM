@@ -34,7 +34,7 @@ def OwnerPageRestricted(request, owner_id):
 # Prospective Owner views
 # @login_check
 @login_required
-@permission_required('user.is_admin')
+@permission_required('users.is_admin')
 def Prospects(request):
     prospect = ProspectiveOwner.objects.all()
     return render(request, 'data_entry/prospect_list.html', {'prospect': prospect})
@@ -51,7 +51,7 @@ def ProspectPage(request, id):
 # Forms
 # @login_check
 @login_required
-@permission_required('user.is_admin')
+@permission_required('users.is_admin')
 def NewOwner(request):
     if request.method == 'POST':
         form = OwnerInfoForm(request.POST)
@@ -63,7 +63,7 @@ def NewOwner(request):
 
 # @login_check
 @login_required
-@permission_required('user.is_admin')
+@permission_required('users.is_admin')
 def OwnerUpdate(request, owner_id):
     owner = OwnerInfo.objects.get(pk=owner_id)
     if request.method == 'POST':
@@ -77,7 +77,7 @@ def OwnerUpdate(request, owner_id):
 
 # @login_check
 @login_required
-@permission_required('user.is_admin')
+@permission_required('users.is_admin')
 def NewProspect(request):
     if request.method == 'POST':
         form = ProspectForm(request.POST)
@@ -89,7 +89,7 @@ def NewProspect(request):
 
 # @login_check
 @login_required
-@permission_required('user.is_admin')
+@permission_required('users.is_admin')
 def ProspectUpdate(request, id):
     prospect = ProspectiveOwner.objects.get(pk=id)
     if request.method == 'POST':
