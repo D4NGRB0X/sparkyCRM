@@ -42,6 +42,7 @@ class OwnerInfo(models.Model):
     account_manager = models.CharField(max_length=255, choices=ACCOUNT_MNGR)
     gdrive = models.URLField(max_length=200)
     payments = models.IntegerField(default=0)
+    urls = models.TextField()
     # Case(
     #         When(contact_type='Active', then=250), default=0,
     #         output_field=models.PositiveIntegerField
