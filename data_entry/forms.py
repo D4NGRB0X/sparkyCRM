@@ -11,7 +11,7 @@ class OwnerInfoForm(forms.ModelForm):
             'first_name', 'last_name', 'personal_email', 'corp_email',
             'phone_1', 'phone_2', 'home_address', 'old_home_address',
             'ssn', 'corp_name', 'second_corp', 'referral', 'date_of_birth',
-            'contact_type', 'account_manager', 'gdrive',
+            'contact_type', 'account_manager', 'gdrive', 'urls',
         ]
 
 
@@ -32,7 +32,7 @@ class OwnerUpdateForm(forms.ModelForm):
             'personal_email', 'corp_email',
             'phone_1', 'phone_2', 'home_address', 'old_home_address',
             'ssn', 'corp_name', 'second_corp', 'referral', 'date_of_birth',
-            'contact_type', 'account_manager', 'gdrive',
+            'contact_type', 'account_manager', 'gdrive', 'urls',
         ]
 
 

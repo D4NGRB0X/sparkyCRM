@@ -40,6 +40,8 @@
             <dd>{{owner.account_manager}}</dd>
             <dt>Account Documents</dt>
             <dd><a href="{{owner.gdrive}}">{{owner.gdrive }}</a></dd>
+            <dt>URLS</dt>
+            <dd>{{owner.urls}}</dd>
     </dl>
     <a href="{% url 'update_owner' owner.owner_id %}">Update</a>
 {% endblock content %}
